@@ -1,0 +1,33 @@
+--Create a clothing store table
+
+CREATE TABLE clothing (id INTEGER PRIMARY KEY, clothing_type TEXT, size REAL, color TEXT, condition TEXT, value INTEGER);
+
+INSERT INTO clothing VALUES (1, 'suit', 'medium', 'blue', 'new', 300);
+INSERT INTO clothing VALUES (2, 'suit', 'medium', 'black', 'new', 400);
+INSERT INTO  clothing VALUES (3, 'dress_shirt', 'small', 'black', 'used', 30);
+INSERT INTO clothing VALUES (4, 'dress_shirt', 'medium', 'pink', 'used', 30);
+INSERT INTO clothing VALUES (5, 'tshirt', 'small', 'green', 'used', 10);
+INSERT INTO clothing VALUES (6, 'tshirt', 'small', 'black', 'used', 10);
+INSERT INTO clothing VALUES (7, 'shorts', 'medium', 'brown', 'new', 25);
+INSERT INTO clothing VALUES (8, 'shorts', 'large', 'blue', 'new', 30);
+INSERT INTO clothing VALUES (9, "socks", 'medium', 'black', 'new', 5);
+INSERT INTO clothing VALUES (10, 'socks', 'medium', 'grey', 'new', 5);
+INSERT INTO clothing VALUES (11, "polo", 'small', 'polo', 'used', 15);
+INSERT INTO clothing VALUES (12, 'polo', 'large', 'red', 'used', 12);
+INSERT INTO clothing VALUES (13, "suit", 'large', 'silver', 'new', 200);
+INSERT INTO clothing VALUES (14, 'jeans', 'extra_large', 'blue', 'used', 5);
+INSERT INTO clothing VALUES (15, 'polo', 'large', 'blue', 'new', 30);
+
+--Sorting clothes from highest to lowest value
+
+SELECT * FROM clothing ORDER BY value DESC;
+
+--Selecting the average price of blue clothes
+SELECT AVG(value) 'clothing_type' 
+FROM clothing
+WHERE color = 'blue';
+
+--What are the three cheapest items?
+SELECT clothing_type, color,condition,value
+FROM clothing
+ORDER BY value LIMIT 3;
