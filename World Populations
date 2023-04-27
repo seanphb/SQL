@@ -1,0 +1,30 @@
+/* These queries are based off of a world database revolved around population, population growth, and population density. */
+
+--What country, under population of 20 million, has the oldest population on average?
+SELECT MAX(median_age), name
+FROM countries
+WHERE population < 20000000;
+
+--What countries with a population greater than 20 million had a 1% population change. What is their density per square kilometer now?
+SELECT name,density_per_sq_km, percent_one_year_change
+FROM countries
+WHERE population > 20000000 AND percent_one_year_change > 1
+ORDER BY density_per_sq_km DESC;
+
+--How many countries had a population change under 10,000, between 10,000-20,000, and over 20,000?
+
+--What countries had a small or large population change?
+SELECT name,
+  CASE
+  WHEN population_change > 10000 THEN 'small_change'
+  ELSE 'large_change'
+  END 'population_fluxation'
+FROM countries
+ORDER BY name;
+
+
+--What are the countries that have over a billion in population?
+SELECT population, name AS country_name
+FROM countries
+GROUP BY name
+HAVING MAX(population) > 1000000000;
